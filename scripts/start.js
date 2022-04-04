@@ -14,12 +14,14 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Keyboards = await hre.ethers.getContractFactory("Keyboards");
-  const keyboards = await Keyboards.deploy();
+  const ContractFactory = await hre.ethers.getContractFactory("Keyboards");
+  const keyboardsContract = await ContractFactory.deploy();
 
-  await keyboards.deployed();
+  await keyboardsContract.deployed();
+  console.log("Keyboards deployed to:", keyboardsContract.address);
 
-  console.log("Keyboards deployed to:", keyboards.address);
+  const keyboards = await keyboardsContract.getKeyboards();
+  console.log("All keyboards:", keyboards);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -30,3 +32,4 @@ main()
     console.error(error);
     process.exit(1);
   });
+  
