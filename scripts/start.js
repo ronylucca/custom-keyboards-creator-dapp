@@ -22,7 +22,9 @@ async function main() {
 
   const keyboards = await keyboardsContract.getKeyboards();
   console.log("All keyboards:", keyboards);
+  
 }
+
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.

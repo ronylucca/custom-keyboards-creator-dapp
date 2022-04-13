@@ -9,11 +9,16 @@ describe("Keyboards", function () {
 
     expect(await keyboards.getKeyboards()).to.have.lengthOf(0);
 
-   // const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
+  });
 
-    // wait until the transaction is mined
-  //  await setGreetingTx.wait();
+  it("Should return the keyboard list with one in total", async function () {
+    const Keyboards = await ethers.getContractFactory("Keyboards");
+    const keyboards = await Keyboards.deploy();
+    await keyboards.deployed();
 
-   // expect(await greeter.greet()).to.equal("Hola, mundo!");
+    const keyboardTx = await keyboards.create("A nice keyboard!");
+    await keyboardTx.wait();
+
+    expect(await keyboards.getKeyboards()).to.have.lengthOf(1);
   });
 });
