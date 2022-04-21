@@ -9,7 +9,7 @@ export default function Home() {
   const [keyboards, setKeyboards] = useState([])
   const [newKeyboard, setNewKeyboard] = useState("")
 
-  const contractAddress = "0x99d00A61f7B36A1DEafEF4EAbC648Af166EBA424";
+  const contractAddress = "0x2c1d0190F7b2bD63D1884dDdAdE276F10fDd0762";
   const contractABI = abi.abi;
 
   const handleAccounts = (accounts) => {
@@ -113,6 +113,7 @@ export default function Home() {
           Create Keyboard!
         </PrimaryButton>
       </form>
+      <div>{keyboards.map((keyboard, i) => <p key= {i}>{keyboard}</p>)} </div>
     </div>
   )
 }
